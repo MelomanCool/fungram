@@ -23,7 +23,10 @@ def conversation_per_user(*handlers: FilterHandler):
     user_conv_handler = {}
 
     def route(bot: Bot, update: Update):
-        user_id = update.message.from_user.id
+        try:
+            user_id = update.message.from_user.id
+        except AttributeError:
+            return False
 
         # continue the conversation if user is participating in one
         if user_id in user_conv_handler.keys():
