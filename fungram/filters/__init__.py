@@ -195,3 +195,11 @@ def language(lang):
             return False
 
     return filter_
+
+
+def inline_query(update: Update):
+    return bool(update.inline_query)
+
+
+def chosen_inline_result(update: Update):
+    return bool(update.chosen_inline_result)
