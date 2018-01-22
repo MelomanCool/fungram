@@ -62,6 +62,13 @@ def regex(pattern):
     return filter_
 
 
+def sticker(update: Update):
+    try:
+        return bool(update.message.sticker)
+    except AttributeError:
+        return False
+
+
 def chat_created(update: Update):
     try:
         return any((
