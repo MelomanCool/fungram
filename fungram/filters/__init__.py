@@ -38,6 +38,9 @@ def command(cmd: str):
         except AttributeError:
             return False
 
+        if not text_:
+            return False
+
         if not (text_.startswith('/') and len(text_) > 1):
             return False
 
