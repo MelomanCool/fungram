@@ -6,7 +6,7 @@ from telegram import Bot, Update
 FilterHandler = namedtuple('FilterHandler', 'filter handler')
 
 
-def message(*handlers: FilterHandler):
+def update(*handlers: FilterHandler):
     def route(bot: Bot, update: Update):
         for filter_, handler in handlers:
             if filter_(update):

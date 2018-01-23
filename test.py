@@ -54,7 +54,7 @@ def main():
         routers.conversation_per_user(
             FilterHandler(filters.text_eq('hello'), conversation_handler),
         ),
-        routers.message(
+        routers.update(
             FilterHandler(filters.command('test'), test),
             FilterHandler(filters.text_eq('ping'), ping),
             FilterHandler(filters.text,            echo),
