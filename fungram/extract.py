@@ -28,12 +28,7 @@ def command_arguments_raw(handler):
 
 def command_arguments_parsed(handler):
     def inner(update: Update, *args, **kwargs):
-        if ' ' not in update.message.text:
-            arguments = []
-
-        else:
-            arguments = update.message.text.split()[1:]
-
+        arguments = update.message.text.split()[1:]
         return handler(update=update, arguments=arguments, *args, **kwargs)
 
     return inner
