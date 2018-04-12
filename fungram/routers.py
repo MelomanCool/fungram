@@ -1,12 +1,7 @@
-from collections import namedtuple
-
 from telegram import Bot, Update
 
 
-FilterHandler = namedtuple('FilterHandler', 'filter handler')
-
-
-def update(*handlers: FilterHandler):
+def update(*handlers):
     def route(bot: Bot, update: Update):
         for filter_, handler in handlers:
             if filter_(update):
@@ -19,7 +14,7 @@ def update(*handlers: FilterHandler):
     return route
 
 
-def conversation_per_user(*handlers: FilterHandler):
+def conversation_per_user(*handlers):
     user_conv_handler = {}
 
     def route(bot: Bot, update: Update):

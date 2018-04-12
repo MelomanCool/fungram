@@ -4,7 +4,6 @@ import config
 from fungram import extract
 from fungram import filters
 from fungram import routers
-from fungram.routers import FilterHandler
 from fungram.updaters import long_polling
 
 
@@ -52,12 +51,12 @@ def conversation_handler():
 def main():
     long_polling(config.TOKEN, routers=[
         routers.conversation_per_user(
-            FilterHandler(filters.text_eq('hello'), conversation_handler),
+            [filters.text_eq('hello'), conversation_handler],
         ),
         routers.update(
-            FilterHandler(filters.command('test'), test),
-            FilterHandler(filters.text_eq('ping'), ping),
-            FilterHandler(filters.text,            echo),
+            [filters.command('test'), test],
+            [filters.text_eq('ping'), ping],
+            [filters.text,            echo],
         )
     ])
 
